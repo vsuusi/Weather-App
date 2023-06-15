@@ -8,11 +8,25 @@ body{
 
 #welcometext{
     color: #ffffff;
+    position: relative;
     font-family: 'Delicious Handrawn', cursive;
     font-size: 25px;
     font-weight: bold;
-    margin: 0 0 40px;
+    margin: 0 0 30px;
     text-align: center;
+    padding: 20px;
+}
+#welcometext::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: top left;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, transparent);
+    z-index: -1;
 }
 
 .wrapper{
@@ -22,16 +36,18 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     max-width: 600px; 
     max-height: 500px; 
     width: 100%; 
     margin: 0 auto; 
     top: 50%; 
     transform: translateY(40%);
+    text-align: center;
 }
 
 .container{
-    width: 100%;
+    width: 80%;
     backdrop-filter: blur(10px);
     padding: 1em 1.8em;
     border: 2px solid rgba(121, 184, 212, 0.5);
@@ -41,49 +57,84 @@ body{
 }
 
 #locname{
+    display: block;
+    width: fit-content;
+    margin: 0 auto 15px;
     font-family: 'Pacifico', cursive;
     font-size: 35px;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+#locname:hover{
+    transform: scale(1.1); 
+    color: rgb(250, 233, 198); 
+}
 
 #condtext{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
     font-size: 24px;
-    color: rgb(250, 233, 198); 
+    color: rgb(255, 255, 255); 
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+#condtext:hover{
+    transform: scale(1.1);
+    color: rgb(250, 233, 198); 
 }
 
 #condimg{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
     width: 100px;
     height: 100px;
     margin: 0 auto;
     display: block;
 }
+#condimg:hover{
+    transform: scale(1.2);
+}
 
 #tempnumber{
-    color: rgb(250, 233, 198); 
+    display: block;
+    width: fit-content;
+    margin: 0 auto 15px;
+    color: rgb(255, 255, 255); 
     font-size: 48px;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+#tempnumber:hover{
+    transform: scale(1.1);
+    color: rgb(250, 233, 198); 
+}
 
 #loctime{
-    color: rgb(250, 233, 198); 
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    color: rgb(255, 255, 255); 
     font-size: 28px;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
-
+#loctime:hover{
+    transform: scale(1.1);
+    color: rgb(250, 233, 198); 
+}
 .search-container{
+    opacity: 0.7;
     width: 87%;
     background: rgba(121, 184, 212, 0.5);
     backdrop-filter: blur(2px);
     padding: 3em 1.8em;
     border: 2px rgba(121, 184, 212, 0.5);
     border-radius: 1em;
-    box-shadow: 0 0.8em 2.8em rgba(3,46,87,1);
+    box-shadow: 0 0.5em 1.8em rgba(3,46,87,1);
     text-align: center;
     display: grid;
     grid-template-columns: 9fr 3fr;
     gap: 1.25em;
+    margin: 0 auto 15px;
 }
 
 .search-container input,
@@ -112,4 +163,8 @@ body{
 .search-container button {
     background-color: rgb(225, 246, 255);
     border-radius: 0.4em;
+}
+
+.search-container button:hover {
+    scale: 1.1;
 }

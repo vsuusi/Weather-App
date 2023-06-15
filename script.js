@@ -2,6 +2,7 @@
 let result = document.getElementById("result");
 let searchbutton = document.getElementById("searchbutton");
 let city = document.getElementById("city");
+const followMe = document.getElementById('welcometext');
 
     // function to get weather data from api
 let getWeather = () => {
@@ -40,6 +41,7 @@ let getWeather = () => {
         });
 }
 };
+
 searchbutton.addEventListener("click", getWeather);
 window.addEventListener("load", getWeather);
 
@@ -49,4 +51,34 @@ city.addEventListener("keydown", function (event){
         event.preventDefault();
         getWeather();
     }
+});
+    // move text on mousemove
+let isInside = false;
+
+followMe.addEventListener('mouseenter', () => {
+    isInside = true;
+    followMe.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
+  });
+  
+  followMe.addEventListener('mouseleave', () => {
+    isInside = false;
+    followMe.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
+  });
+
+document.addEventListener('mousemove', (event) => {
+    if (!isInside) return;
+    
+    const rect = followMe.getBoundingClientRect();
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    const offsetX = mouseX - rect.left;
+    const offsetY = mouseY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const deltaX = offsetX - centerX;
+    const deltaY = offsetY - centerY;
+    const angleX = (deltaY / centerY) * -25; // Adjust the bending effect here
+    const angleY = (deltaX / centerX) * 15; // Adjust the bending effect here
+
+    followMe.style.transform = `perspective(500px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
 });
