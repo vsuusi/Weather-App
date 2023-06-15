@@ -39,3 +39,10 @@ let getWeather = () => {
 };
 searchbutton.addEventListener("click", getWeather);
 window.addEventListener("load", getWeather);
+
+city.addEventListener("keydown", function (event){
+    if (event.key == "Enter"){
+        event.preventDefault();
+        getWeather();
+    }
+});
