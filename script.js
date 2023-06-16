@@ -33,6 +33,7 @@ let getWeather = () => {
             <h1 id="tempnumber">${roundedTemp}°C</h1>
             <h2 id="loctime">local time: ${parsedTime[1]}</h2>
             `
+            city.value = "";
         })
             // catch error if data was not found
         .catch((error) => {
