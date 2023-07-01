@@ -9,10 +9,23 @@
     </head>
     <body>
         <div class="wrapper">
-            <div class="container"> 
-            <p id="welcometext"> Welcome to the weather app! <br> You can check current weather from any major city.</p>
+           <!-- <div>
+                <p id="welcometext"> Welcome to the weather app! <br> You can check current weather from any major city.</p>
+            </div> -->
+
+            <!--
+            <div class="location-container">
+                <div class="container">
+                    <div id="resultLoc">
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="currcontainer">
+
+                <div class="container">
                     <div class="search-container">
-                        <input 
+                        <input
                         type="text"
                         placeholder="Enter a city"
                         id="city"
@@ -20,9 +33,39 @@
                         />
                         <button id="searchbutton">Search</button>
                     </div>
-                <div id="result"></div>
+                    <div id="result">
+                    </div>
+                </div>
             </div>
+            <div class="weather-containers">
+
+                <div class="forecontainer1">
+                    <div class="container">
+                        <h1> Tomorrow </h1>
+                        <div id="result2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecontainer2">
+                    <div class="container">
+                        <h1> Day aft tomorrow </h1>
+                        <div id="result3">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecontainer3">
+                    <div class="container">
+                        <h1> 2 Days aft tomorrow </h1>
+                        <div id="result4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
         <script src="key.js"></script>
         <script src="script.js"></script>
     </body>

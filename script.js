@@ -7,7 +7,7 @@ const followMe = document.getElementById('welcometext');
     // function to get weather data from api
 let getWeather = () => {
     let cityValue = city.value;
-    let url = `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${cityValue}`;
+    let url = `https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${cityValue}`;
 
         // check if city is empty
     if (cityValue == "") {
@@ -27,12 +27,30 @@ let getWeather = () => {
             let parsedTime = data.location.localtime.split(" ");
 
             result.innerHTML = `
-            <h2 id="locname">${data.location.name}</h2>
-            <h3 id="condtext">${data.current.condition.text}</h3>
-            <img id=condimg src=${data.current.condition.icon}></img>
-            <h1 id="tempnumber">${roundedTemp}°C</h1>
-            <h2 id="loctime">local time: ${parsedTime[1]}</h2>
+            <h2 class="locname">${data.location.name}</h2>
+            <h3 class="condtext">${data.current.condition.text}</h3>
+            <img class=condimg src=${data.current.condition.icon}></img>
+            <h1 class="tempnumber">${roundedTemp}°C</h1>
+            <h2 class="loctime">local time: ${parsedTime[1]}</h2>
             `
+            result2.innerHTML = `
+            <h3 class="condtext">${data.current.condition.text}</h3>
+            <img class=condimg src=${data.current.condition.icon}></img>
+            `
+            //<h1 class="maxtemp">${data.forecast.forecastday.day.maxtemp_c}°C</h1>
+            //<h1 class="mintemp">${data.forecast.forecastday.day.mintemp_c}°C</h1> */
+
+            result3.innerHTML = `
+            <h3 class="condtext">${data.current.condition.text}</h3>
+            <img class=condimg src=${data.current.condition.icon}></img>
+            <h1 class="tempnumber">${roundedTemp}°C</h1>
+            `
+            result4.innerHTML = `
+            <h3 class="condtext">${data.current.condition.text}</h3>
+            <img class=condimg src=${data.current.condition.icon}></img>
+            <h1 class="tempnumber">${roundedTemp}°C</h1>
+            `
+
             city.value = "";
         })
             // catch error if data was not found
@@ -60,7 +78,7 @@ followMe.addEventListener('mouseenter', () => {
     isInside = true;
     followMe.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
   });
-  
+
   followMe.addEventListener('mouseleave', () => {
     isInside = false;
     followMe.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg)';
@@ -68,7 +86,7 @@ followMe.addEventListener('mouseenter', () => {
 
 document.addEventListener('mousemove', (event) => {
     if (!isInside) return;
-    
+
     const rect = followMe.getBoundingClientRect();
     const mouseX = event.clientX;
     const mouseY = event.clientY;
